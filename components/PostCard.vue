@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Post } from '~/data/posts'
+import type { Post } from '@/data/posts'
 const { post } = defineProps<{
   post: Post
 }>()
@@ -9,16 +9,16 @@ const isHover = ref(false)
 <template>
   <div class="card" :class="{ hover: isHover }">
     <h2 class="title">{{ post.title }}</h2>
-    <div class="category">
-      <a href="#">Category: {{ post.category.name }}</a>
-    </div>
+
+    <CategoryLink :category="post.category" />
+
     <RenderMarkdown :source="post.intro" />
-    <a
-      href="#"
+    <NuxtLink
+      :to="`/posts/${post.slug}`"
       class="more"
       @mouseenter="isHover = true"
       @mouseleave="isHover = false"
-      >More...</a
+      >More...</NuxtLink
     >
   </div>
 </template>
@@ -37,10 +37,6 @@ const isHover = ref(false)
 
 .card .title {
   font-size: 20pt;
-}
-
-.card .category {
-  margin: 5px 0px;
 }
 
 .card .more {
