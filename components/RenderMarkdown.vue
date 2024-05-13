@@ -16,7 +16,7 @@ const markdownOptions = {
       return
     }
     return highlightJs.highlight(str, { language: lang }).value
-  }
+  },
 }
 </script>
 

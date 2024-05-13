@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss">
-@use "@/assets/styles/global.scss";
+@use '@/assets/styles/global.scss';
 
 .layout {
   width: 620px;
